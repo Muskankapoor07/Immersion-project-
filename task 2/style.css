@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #2ecc40; /* green background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.main-heading {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 2.5em;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.sub-heading {
+    text-align: center;
+    margin-bottom: 16px;
+    color: #fff;
+    font-size: 1.1em;
+}
+
+#notes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+.note-box {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 16px;
+    min-width: 220px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.note-box textarea {
+    border: none;
+    resize: none;
+    width: 100%;
+    height: 80px;
+    font-size: 1em;
+    outline: none;
+    background: transparent;
+}
+
+.add-note-inside {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #007bff;
+    color: #fff;
+    font-size: 1.2em;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.add-note-inside:hover {
+    background: #0056b3;
+}
+
+#add-note {
+    display: none;
+}
