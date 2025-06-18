@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Product Search</h1>
+    <form id="search-form">
+        <input type="text" id="search-input" placeholder="Search for products..." required />
+        <button type="submit">Search</button>
+        <select id="sort-select">
+            <option value="default">Sort by price</option>
+            <option value="asc">Low to High</option>
+            <option value="desc">High to Low</option>
+        </select>
+        <span id="error-message"></span>
+    </form>
+    <button id="back-home" style="display:none;">Back to Home</button>
+    <div id="products-container"></div>
+    <script src="app.js"></script>
+</body>
+</html>
