@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicles</title>
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+    <h1>Vehicle List</h1>
+    <a href="/vehicles/new">Add New Vehicle</a>
+    <div class="vehicle-list">
+        <% if (vehicles.length === 0) { %>
+            <p>No vehicles found.</p>
+        <% } %>
+        <% vehicles.forEach(vehicle => { %>
+            <div class="vehicle-card">
+                <img src="<%= vehicle.image %>" alt="<%= vehicle.vehicleName %>" />
+                <h2><%= vehicle.vehicleName %></h2>
+                <div class="brand">Brand: <%= vehicle.brand %></div>
+                <div class="price">Price: $<%= vehicle.price %></div>
+                <div class="desc"><%= vehicle.desc %></div>
+                <form action="/vehicles/<%= vehicle.id %>/edit" method="get" style="display:inline;">
+                    <button type="submit">Edit</button>
+                </form>
+                <form action="/vehicles/<%= vehicle.id %>/delete" method="post" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Delete this vehicle?')">Delete</button>
+                </form>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>

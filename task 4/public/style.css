@@ -1,0 +1,122 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(120deg, #e0eafc, #cfdef3 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+h1 {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 2.5em;
+    color: #2d3a4b;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.vehicle-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+    margin: 32px 16px;
+}
+.vehicle-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(44, 62, 80, 0.10);
+    padding: 24px 20px 20px 20px;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.15s, box-shadow 0.15s;
+    position: relative;
+    overflow: hidden;
+}
+.vehicle-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.18);
+}
+.vehicle-card img {
+    max-width: 100%;
+    max-height: 140px;
+    object-fit: contain;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    background: #f4f8fb;
+    box-shadow: 0 1px 4px rgba(44, 62, 80, 0.04);
+}
+.vehicle-card h2 {
+    margin: 8px 0 4px 0;
+    color: #007bff;
+    font-size: 1.3em;
+}
+.vehicle-card .brand {
+    color: #555;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.vehicle-card .price {
+    color: #43a047;
+    font-size: 1.15em;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.vehicle-card .desc {
+    color: #333;
+    font-size: 1em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.vehicle-card form {
+    display: inline-block;
+    margin: 4px 2px;
+}
+button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #007bff 60%, #00c6ff 100%);
+    color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    margin: 2px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,123,255,0.08);
+    transition: background 0.2s, transform 0.1s;
+}
+button:hover {
+    background: linear-gradient(90deg, #0056b3 60%, #007bff 100%);
+    transform: translateY(-2px) scale(1.04);
+}
+label {
+    display: block;
+    margin: 10px 0 4px 0;
+    font-weight: 500;
+    color: #2d3a4b;
+}
+input, textarea {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #bfc9d1;
+    width: 240px;
+    margin-top: 2px;
+    font-size: 1em;
+    transition: border 0.2s;
+}
+input:focus, textarea:focus {
+    border: 1.5px solid #007bff;
+}
+textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 12px;
+    font-weight: 600;
+}
+a:hover {
+    text-decoration: underline;
+}
