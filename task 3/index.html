@@ -13,9 +13,17 @@
         <button type="submit">Search</button>
         <select id="sort-select">
             <option value="default">Sort by price</option>
-            <option value="asc">Low to High</option>
-            <option value="desc">High to Low</option>
+            <option value="asc">Price: Low to High</option>
+            <option value="desc">Price: High to Low</option>
+            <option value="rating-asc">Rating: Low to High</option>
+            <option value="rating-desc">Rating: High to Low</option>
         </select>
+        <select id="brand-filter">
+            <option value="all">All Brands</option>
+        </select>
+        <input type="number" id="min-price" placeholder="Min Price" min="0" style="width:90px;" />
+        <input type="number" id="max-price" placeholder="Max Price" min="0" style="width:90px;" />
+        <button type="button" id="apply-filters">Apply Filters</button>
         <span id="error-message"></span>
     </form>
     <button id="back-home" style="display:none;">Back to Home</button>

@@ -5,13 +5,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const errorMessage = document.getElementById('error-message');
     const sortSelect = document.getElementById('sort-select');
     const backHomeBtn = document.getElementById('back-home');
+    const brandFilter = document.getElementById('brand-filter');
+    const minPriceInput = document.getElementById('min-price');
+    const maxPriceInput = document.getElementById('max-price');
+    const applyFiltersBtn = document.getElementById('apply-filters');
 
     let currentProducts = [];
+    let allBrands = [];
 
-    // Fetch and display all products on load
+    
     fetchProducts();
 
-    // Search form submit handler
+  
     searchForm.addEventListener('submit', function(e) {
         e.preventDefault();
         const query = searchInput.value.trim();
@@ -43,7 +48,10 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                currentProducts = data.products || data; // API returns {products:[]}
+                currentProducts = data.products || data;
+                
+                allBrands = Array.from(new Set(currentProducts.map(p => p.brand))).filter(Boolean);
+                updateBrandFilter();
                 sortAndDisplayProducts();
             })
             .catch(() => {
@@ -51,14 +59,44 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
+    function updateBrandFilter() {
+    
+        if (!allBrands.length) return;
+        brandFilter.innerHTML = '<option value="all">All Brands</option>' +
+            allBrands.map(brand => `<option value="${brand}">${brand}</option>`).join('');
+    }
+
+    applyFiltersBtn.addEventListener('click', function() {
+        sortAndDisplayProducts();
+    });
+
     function sortAndDisplayProducts() {
-        let sortedProducts = [...currentProducts];
-        if (sortSelect.value === 'asc') {
-            sortedProducts.sort((a, b) => a.price - b.price);
-        } else if (sortSelect.value === 'desc') {
-            sortedProducts.sort((a, b) => b.price - a.price);
+        let filteredProducts = [...currentProducts];
+        
+        const selectedBrand = brandFilter.value;
+        if (selectedBrand && selectedBrand !== 'all') {
+            filteredProducts = filteredProducts.filter(p => p.brand === selectedBrand);
         }
-        displayProducts(sortedProducts);
+       
+        const minPrice = parseFloat(minPriceInput.value);
+        const maxPrice = parseFloat(maxPriceInput.value);
+        if (!isNaN(minPrice)) {
+            filteredProducts = filteredProducts.filter(p => p.price >= minPrice);
+        }
+        if (!isNaN(maxPrice)) {
+            filteredProducts = filteredProducts.filter(p => p.price <= maxPrice);
+        }
+      
+        if (sortSelect.value === 'asc') {
+            filteredProducts.sort((a, b) => a.price - b.price);
+        } else if (sortSelect.value === 'desc') {
+            filteredProducts.sort((a, b) => b.price - a.price);
+        } else if (sortSelect.value === 'rating-asc') {
+            filteredProducts.sort((a, b) => (a.rating || 0) - (b.rating || 0));
+        } else if (sortSelect.value === 'rating-desc') {
+            filteredProducts.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+        }
+        displayProducts(filteredProducts);
     }
 
     function displayProducts(products) {
@@ -72,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="product-title">${product.title || ''}</div>
                 <div class="product-name">${product.name || ''}</div>
                 <div class="product-price">$${product.price || ''}</div>
+                <div class="product-rating">⭐ ${product.rating || 'N/A'}</div>
             </div>
         `).join('');
     }

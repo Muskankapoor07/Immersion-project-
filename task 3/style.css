@@ -20,7 +20,7 @@ h1 {
     justify-content: center;
     align-items: center;
     margin: 32px 0 16px 0;
-    gap: 12px;
+    gap: 12px 8px;
     flex-wrap: wrap;
     background: #fff;
     padding: 18px 28px;
@@ -99,17 +99,33 @@ button[type="submit"]:hover {
     flex-direction: column;
     align-items: center;
     transition: transform 0.15s, box-shadow 0.15s;
+    position: relative;
+    overflow: hidden;
 }
 .product-card:hover {
     transform: translateY(-6px) scale(1.03);
     box-shadow: 0 8px 32px rgba(44, 62, 80, 0.18);
 }
 
+.product-card .product-rating {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: #ffe082;
+    color: #b26a00;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 16px;
+    box-shadow: 0 1px 4px rgba(44, 62, 80, 0.04);
+    letter-spacing: 1px;
+}
+
 .product-card img {
     max-width: 100%;
     max-height: 120px;
     object-fit: contain;
-    margin-bottom: 14px;
+    margin-bottom: 18px;
     border-radius: 8px;
     background: #f4f8fb;
     box-shadow: 0 1px 4px rgba(44, 62, 80, 0.04);
@@ -117,7 +133,7 @@ button[type="submit"]:hover {
 
 .product-card .product-title {
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     text-align: center;
     color: #2d3a4b;
     font-size: 1.1em;
@@ -125,7 +141,7 @@ button[type="submit"]:hover {
 
 .product-card .product-name {
     color: #555;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     text-align: center;
     font-size: 1em;
 }
@@ -133,7 +149,7 @@ button[type="submit"]:hover {
 .product-card .product-price {
     color: #007bff;
     font-size: 1.15em;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     font-weight: 600;
 }
 
@@ -154,5 +170,33 @@ button[type="submit"]:hover {
 }
 #back-home:hover {
     background: linear-gradient(90deg, #ff6f00 60%, #ff9800 100%);
+    transform: translateY(-2px) scale(1.04);
+}
+
+#brand-filter, #min-price, #max-price, #apply-filters {
+    padding: 10px 12px;
+    font-size: 1.05em;
+    border: 1px solid #bfc9d1;
+    border-radius: 6px;
+    background: #f7fafd;
+    color: #2d3a4b;
+    margin: 0 2px;
+    font-weight: 500;
+    transition: border 0.2s;
+}
+#brand-filter:focus, #min-price:focus, #max-price:focus {
+    border: 1.5px solid #007bff;
+}
+#apply-filters {
+    background: linear-gradient(90deg, #43e97b 60%, #38f9d7 100%);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(67,233,123,0.08);
+    transition: background 0.2s, transform 0.1s;
+}
+#apply-filters:hover {
+    background: linear-gradient(90deg, #11998e 60%, #38ef7d 100%);
     transform: translateY(-2px) scale(1.04);
 }
